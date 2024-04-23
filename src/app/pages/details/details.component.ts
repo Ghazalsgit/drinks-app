@@ -43,13 +43,16 @@ export class DetailsComponent {
   }
 
   ingredientsWithMeasurements(drink: any): string[] {
-    const ingredients = [];
-    for (let i = 1; i <= 15; i++) {
-      const ingredient = drink['strIngredient' + i];
-      const measurement = drink['strMeasure' + i];
-      if (ingredient && measurement) {
-        ingredients.push(`${ingredient}: ${measurement}`);
+    let ingredients: string[] = [];
+    let i = 1;
+    while (drink[`strIngredient${i}`]) {
+      const ingredient = drink[`strIngredient${i}`];
+      const measurement = drink[`strMeasure${i}`];
+
+      if (ingredient) {
+        ingredients = [...ingredients, `${ingredient}: ${measurement}`];
       }
+      i++;
     }
     return ingredients;
   }

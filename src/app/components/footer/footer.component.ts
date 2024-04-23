@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Config } from 'src/app/models/drink.model';
 
 @Component({
   selector: 'app-footer',
@@ -6,5 +7,5 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./footer.component.scss'],
 })
 export class FooterComponent {
-  @Input() config: any;
+  @Input() config: Config | undefined;
 }
