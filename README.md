@@ -12,9 +12,13 @@ Eliq Drink App allows you to customize the appearance and functionality of your 
 ## Getting Started
 
 1.Clone this repository to your local machine.
+
 2.Navigate to the project directory.
+
 3.Install dependencies by running npm install.
+
 4.Customize the config.json file according to your preferences.
+
 5.Run the app using ng serve and navigate to http://localhost:4200 in your browser.
 
 ## Configuration
