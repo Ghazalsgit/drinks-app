@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Subject } from 'rxjs';
-import { Category, Drink } from 'src/app/models/drink.model';
+import { Config, Drink } from 'src/app/models/drink.model';
 import { ApiService } from 'src/app/services/api.service';
 import { ConfigService } from 'src/app/services/config.service';
 
@@ -13,11 +13,10 @@ import { ConfigService } from 'src/app/services/config.service';
 })
 export class HomeComponent implements OnInit {
   drinks$ = new BehaviorSubject<Drink[]>([]);
-  categories$ = new BehaviorSubject<Category[]>([]);
   paginatedDrinks: Subject<Drink[]> = new BehaviorSubject<Drink[]>([]);
   pageSize = 10;
   totalItems = 0;
-  configFile: any;
+  configFile: Config | undefined;
 
   constructor(
     private api: ApiService,

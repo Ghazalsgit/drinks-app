@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
-import { Drink } from 'src/app/models/drink.model';
+import { Config, Drink } from 'src/app/models/drink.model';
 import { ApiService } from 'src/app/services/api.service';
 import { ConfigService } from 'src/app/services/config.service';
 
@@ -14,7 +14,7 @@ export class DetailsComponent {
   drink$ = new BehaviorSubject<Drink[] | undefined>(undefined);
   selectedLanguage: string = 'en';
   description: string | undefined;
-  configFile: any;
+  configFile: Config | undefined;
 
   constructor(
     private route: ActivatedRoute,

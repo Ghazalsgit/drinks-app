@@ -9,13 +9,19 @@ export interface Drink {
   strInstructionsFR?: string;
   strInstructionsIT?: string;
 }
-export interface ApiResponse {
+export interface DrinkList {
   drinks: Drink[]; // Array of drinks
 }
-export interface Category {
-  strCategory: string;
-}
-
-export interface ApiResponseCategory {
-  drinks: Category[]; // Array of categories
+export interface Config {
+  appName: string;
+  backgroundColor: string;
+  logoUrl: string;
+  titleColor: string;
+  footerText: string;
+  textColor: string;
+  fontStyle: string;
+  apiUrl: string;
+  apiUrlWithId: string;
+  buttonColor: string;
+  containerColor: string;
 }

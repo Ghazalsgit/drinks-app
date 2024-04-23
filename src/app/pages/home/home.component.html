@@ -1,8 +1,8 @@
-<div [style.backgroundColor]="configFile.backgroundColor">
+<div [style.backgroundColor]="configFile?.backgroundColor">
   <div class="p-4 flex items-center gap-4">
-    <img [src]="configFile.logoUrl" class="w-14" />
-    <h1 class="mt-2 font-extrabold" [style.color]="configFile.titleColor">
-      {{ configFile.appName }}
+    <img [src]="configFile?.logoUrl" class="w-14" />
+    <h1 class="mt-2 font-extrabold" [style.color]="configFile?.titleColor">
+      {{ configFile?.appName }}
     </h1>
   </div>
   <div class="flex">
@@ -16,11 +16,11 @@
         <app-drink-container
           [title]="item.strDrink"
           [img]="item.strDrinkThumb"
-          [backgroundColor]="configFile.containerColor"
+          [backgroundColor]="configFile?.containerColor"
           [textColor]="'black'"
           (showdetails)="onShowDetails(item.idDrink)"
-          [buttonColor]="configFile.buttonColor"
-          [textColor]="configFile.textColor"
+          [buttonColor]="configFile?.buttonColor"
+          [textColor]="configFile?.textColor"
         >
         </app-drink-container>
       </ng-container>
