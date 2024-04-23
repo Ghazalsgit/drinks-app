@@ -1,27 +1,43 @@
 # EliqDrinksApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.0.
+Welcome to Eliq Drink App, a customizable white label app for exploring alcoholic drinks!
 
-## Development server
+**Note:** This application is designed to be viewed on mobile devices. It is optimized for smaller screens and provides a user-friendly experience on smartphones and tablets.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Code scaffolding
+## Overview
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Eliq Drink App allows you to customize the appearance and functionality of your drink exploration app using a simple config.json file. By editing this file, you can change the app name, colors, fonts, API endpoints, and more.
 
-## Build
+## Getting Started
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+1.Clone this repository to your local machine.
 
-## Running unit tests
+2.Navigate to the project directory.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+3.Install dependencies by running npm install.
 
-## Running end-to-end tests
+4.Customize the config.json file according to your preferences.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+5.Run the app using ng serve and navigate to http://localhost:4200 in your browser.
 
-## Further help
+## Configuration
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+The config.json file contains the following customizable options:
+
+* appName: The name of your app.
+* backgroundColor: The background color of the app.
+* logoUrl: The URL of the logo image.
+* titleColor: The color of the titles and headings.
+* footerText: The text to display in the footer.
+* textColor: The color of the text content.
+* fontStyle: The font style to apply to the text.
+* apiUrl: The URL of the API endpoint for fetching alcoholic drinks.
+* apiUrlWithId: The URL of the API endpoint for fetching a specific drink by ID.
+* buttonColor: The color of buttons in the app.
+* containerColor: The color of containers and cards in the app.
+
+## Usage
+
+Once you've configured the config.json file to your liking, run the app and explore the various features, such as browsing drinks by category, viewing drink details, and more.
+
