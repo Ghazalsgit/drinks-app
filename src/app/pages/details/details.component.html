@@ -1,0 +1,63 @@
+<div>
+  <button
+    (click)="goBack()"
+    class="absolute top-0 z-10 bg-opacity-50 px-4 py-2 m-2 rounded-md"
+    [style.backgroundColor]="configFile.buttonColor"
+    [style.color]="configFile.textColor"
+  >
+    BACK
+  </button>
+  <ng-container *ngFor="let drink of drink$ | async">
+    <img
+      [src]="drink.strDrinkThumb"
+      alt="{{ drink.strDrink }}"
+      class="relative top-0"
+    />
+    <div class="flex flex-col mb-10 relative">
+      <div>
+        <p class="text-gray-950 px-2 pt-4">
+          <strong>Category:</strong> {{ drink.strCategory }}
+        </p>
+        <h2 class="text-3xl font-semibold text-gray-950 p-2">
+          {{ drink.strDrink }}
+        </h2>
+        <div>
+          <h4 class="text-gray-950 px-4">Pick a language:</h4>
+          <select
+            class="bg-gray-200 border border-gray-300 px-4 py-2 rounded-md w-1/2 m-4"
+            (change)="onLanguageChange($event, drink)"
+            [value]="selectedLanguage"
+          >
+            <option value="en">English</option>
+            <option [disabled]="!drink.strInstructionsDE" value="de">
+              German
+            </option>
+            <option [disabled]="!drink.strInstructionsES" value="es">
+              Spanish
+            </option>
+            <option [disabled]="!drink.strInstructionsFR" value="fr">
+              French
+            </option>
+            <option [disabled]="!drink.strInstructionsIT" value="it">
+              Italian
+            </option>
+          </select>
+        </div>
+        <div class="mx-4">
+          <h3 class="text-gray-950 my-2 font-semibold">Ingredients:</h3>
+          <ul class="text-gray-950">
+            <ng-container
+              *ngFor="let ingredient of ingredientsWithMeasurements(drink)"
+            >
+              <li>{{ ingredient }}</li>
+            </ng-container>
+          </ul>
+        </div>
+        <p class="text-gray-950 p-4">
+          {{ description ? description : drink.strInstructions }}
+        </p>
+      </div>
+    </div>
+  </ng-container>
+  <app-footer [config]="configFile"></app-footer>
+</div>

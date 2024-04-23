@@ -1,0 +1,22 @@
+<div
+  class="rounded-lg shadow-lg p-6 my-4"
+  [style.backgroundColor]="backgroundColor"
+  (click)="onShowDetails()"
+>
+  <div class="flex items-center mb-4">
+    <div
+      class="w-24 h-24 mr-6 overflow-hidden rounded-md shadow-md max-w-40 min-w-30"
+    >
+      <img
+        [src]="img"
+        alt="picture of a drink"
+        class="object-cover w-28 h-full"
+      />
+    </div>
+    <div>
+      <h1 class="font-semibold text-xl" [style.color]="textColor">
+        {{ title }}
+      </h1>
+    </div>
+  </div>
+</div>
