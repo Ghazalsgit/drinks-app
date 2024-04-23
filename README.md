@@ -1,27 +1,36 @@
 # EliqDrinksApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.0.
+Welcome to Eliq Drink App, a customizable white label app for exploring alcoholic drinks!
 
-## Development server
+## Overview
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Eliq Drink App allows you to customize the appearance and functionality of your drink exploration app using a simple config.json file. By editing this file, you can change the app name, colors, fonts, API endpoints, and more.
 
-## Code scaffolding
+## Getting Started
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+1.Clone this repository to your local machine.
+2.Navigate to the project directory.
+3.Install dependencies by running npm install.
+4.Customize the config.json file according to your preferences.
+5.Run the app using ng serve and navigate to http://localhost:4200 in your browser.
 
-## Build
+## Configuration
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+The config.json file contains the following customizable options:
 
-## Running unit tests
+* appName: The name of your app.
+* backgroundColor: The background color of the app.
+* logoUrl: The URL of the logo image.
+* titleColor: The color of the titles and headings.
+* footerText: The text to display in the footer.
+* textColor: The color of the text content.
+* fontStyle: The font style to apply to the text.
+* apiUrl: The URL of the API endpoint for fetching alcoholic drinks.
+* apiUrlWithId: The URL of the API endpoint for fetching a specific drink by ID.
+* buttonColor: The color of buttons in the app.
+* containerColor: The color of containers and cards in the app.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Usage
 
-## Running end-to-end tests
+Once you've configured the config.json file to your liking, run the app and explore the various features, such as browsing drinks by category, viewing drink details, and more.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
