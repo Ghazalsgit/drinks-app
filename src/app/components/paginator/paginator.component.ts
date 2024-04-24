@@ -5,12 +5,18 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
-import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import {
+  MatPaginator,
+  MatPaginatorModule,
+  PageEvent,
+} from '@angular/material/paginator';
 
 @Component({
+  standalone: true,
   selector: 'app-paginator',
   templateUrl: './paginator.component.html',
   styleUrls: ['./paginator.component.scss'],
+  imports: [MatPaginatorModule],
 })
 export class PaginatorComponent {
   @Input() totalItems?: number;

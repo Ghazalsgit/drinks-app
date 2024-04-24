@@ -1,14 +1,17 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { FooterComponent } from 'src/app/components/footer/footer.component';
 import { Config, Drink } from 'src/app/models/drink.model';
 import { ApiService } from 'src/app/services/api.service';
 import { ConfigService } from 'src/app/services/config.service';
 
 @Component({
+  standalone: true,
   selector: 'app-details',
   templateUrl: './details.component.html',
-  styleUrls: ['./details.component.scss'],
+  imports: [FooterComponent, CommonModule],
 })
 export class DetailsComponent {
   drink$ = new BehaviorSubject<Drink[]>([]);

@@ -14,14 +14,7 @@ import { DetailsComponent } from './pages/details/details.component';
 import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    DrinkContainerComponent,
-    PaginatorComponent,
-    HomeComponent,
-    DetailsComponent,
-    FooterComponent,
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

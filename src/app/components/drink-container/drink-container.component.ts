@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
+  standalone: true,
   selector: 'app-drink-container',
   templateUrl: './drink-container.component.html',
   styleUrls: ['./drink-container.component.scss'],

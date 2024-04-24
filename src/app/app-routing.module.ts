@@ -5,8 +5,18 @@ import { DetailsComponent } from './pages/details/details.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent },
-  { path: 'details/:id', component: DetailsComponent },
+  {
+    path: 'home',
+    loadComponent: () =>
+      import('./pages/home/home.component').then((m) => m.HomeComponent),
+  },
+  {
+    path: 'details/:id',
+    loadComponent: () =>
+      import('./pages/details/details.component').then(
+        (m) => m.DetailsComponent
+      ),
+  },
 ];
 
 @NgModule({
