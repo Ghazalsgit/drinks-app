@@ -13,8 +13,8 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
   styleUrls: ['./paginator.component.scss'],
 })
 export class PaginatorComponent {
-  @Input() totalItems: number | undefined;
-  @Input() pageSize: number | undefined;
+  @Input() totalItems?: number;
+  @Input() pageSize?: number;
   @Output() pageChanged = new EventEmitter<PageEvent>();
   @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
 

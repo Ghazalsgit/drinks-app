@@ -7,5 +7,5 @@ import { Config } from 'src/app/models/drink.model';
   styleUrls: ['./footer.component.scss'],
 })
 export class FooterComponent {
-  @Input() config: Config | undefined;
+  @Input() config?: Config;
 }

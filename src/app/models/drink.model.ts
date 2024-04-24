@@ -10,7 +10,7 @@ export interface Drink {
   strInstructionsIT?: string;
 }
 export interface DrinkList {
-  drinks: Drink[]; // Array of drinks
+  drinks: Drink[];
 }
 export interface Config {
   appName: string;

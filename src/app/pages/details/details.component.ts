@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Config, Drink } from 'src/app/models/drink.model';
 import { ApiService } from 'src/app/services/api.service';
 import { ConfigService } from 'src/app/services/config.service';
@@ -11,17 +11,19 @@ import { ConfigService } from 'src/app/services/config.service';
   styleUrls: ['./details.component.scss'],
 })
 export class DetailsComponent {
-  drink$ = new BehaviorSubject<Drink[] | undefined>(undefined);
+  drink$ = new BehaviorSubject<Drink[]>([]);
+  configFile$: Observable<Config>;
   selectedLanguage: string = 'en';
-  description: string | undefined;
-  configFile: Config | undefined;
+  description?: string;
 
   constructor(
     private route: ActivatedRoute,
     private api: ApiService,
     private router: Router,
     private config: ConfigService
-  ) {}
+  ) {
+    this.configFile$ = this.config.getConfig();
+  }
 
   ngOnInit() {
     this.route.paramMap.subscribe((params) => {
@@ -30,15 +32,9 @@ export class DetailsComponent {
       if (id !== null) {
         this.api.getAlcoholicDrinkById(id).subscribe((drink) => {
           const newDrink = drink.drinks;
-          console.log(newDrink);
           this.drink$.next(newDrink);
         });
       }
-    });
-    this.config.getConfig().subscribe((config) => {
-      console.log(config);
-
-      this.configFile = config;
     });
   }
 
@@ -47,9 +43,12 @@ export class DetailsComponent {
     let i = 1;
     while (drink[`strIngredient${i}`]) {
       const ingredient = drink[`strIngredient${i}`];
-      const measurement = drink[`strMeasure${i}`];
+      let measurement = drink[`strMeasure${i}`];
 
       if (ingredient) {
+        if (!measurement) {
+          measurement = 'not available';
+        }
         ingredients = [...ingredients, `${ingredient}: ${measurement}`];
       }
       i++;
@@ -75,8 +74,7 @@ export class DetailsComponent {
         this.description = drink.strInstructionsIT || drink.strInstructions;
         break;
       default:
-        this.description = drink.strInstructions || drink.strInstructions;
+        this.description = drink.strInstructions;
     }
-    console.log(event.target.value, drink);
   }
 }

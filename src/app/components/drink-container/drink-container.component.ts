@@ -6,11 +6,11 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./drink-container.component.scss'],
 })
 export class DrinkContainerComponent {
-  @Input() backgroundColor: string | undefined;
-  @Input() textColor: string | undefined;
-  @Input() img: string | undefined;
-  @Input() title: string | undefined;
-  @Input() buttonColor: string | undefined;
+  @Input() backgroundColor?: string;
+  @Input() textColor?: string;
+  @Input() img?: string;
+  @Input() title?: string;
+  @Input() buttonColor?: string;
 
   @Output() showdetails: EventEmitter<void> = new EventEmitter<void>();
 

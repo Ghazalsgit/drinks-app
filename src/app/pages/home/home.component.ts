@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { Router } from '@angular/router';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, combineLatest, map } from 'rxjs';
 import { Config, Drink } from 'src/app/models/drink.model';
 import { ApiService } from 'src/app/services/api.service';
 import { ConfigService } from 'src/app/services/config.service';
@@ -12,45 +12,46 @@ import { ConfigService } from 'src/app/services/config.service';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  drinks$ = new BehaviorSubject<Drink[]>([]);
-  paginatedDrinks: Subject<Drink[]> = new BehaviorSubject<Drink[]>([]);
-  pageSize = 10;
-  totalItems = 0;
-  configFile: Config | undefined;
+  drinks$: Observable<Drink[]>;
+  pageSize$: Subject<number> = new BehaviorSubject<number>(10);
+  pageNumber$: Subject<number> = new BehaviorSubject<number>(0);
+  totalItems$: Observable<number>;
+  configFile$: Observable<Config>;
+  paginatedDrinks$: Observable<Drink[]>;
 
   constructor(
     private api: ApiService,
     private router: Router,
     private config: ConfigService
-  ) {}
+  ) {
+    this.drinks$ = this.api.getAlcoholicDrinks();
+    this.configFile$ = this.config.getConfig();
 
-  ngOnInit(): void {
-    this.api.getAlcoholicDrinks().subscribe((drinks) => {
-      this.totalItems = drinks.length;
-      this.paginateAndSet(drinks, 0);
-    });
+    this.totalItems$ = this.drinks$.pipe(map((value) => value.length));
+    this.pageNumber$.next(0);
+    this.pageSize$.next(10);
 
-    this.config.getConfig().subscribe((config) => {
-      console.log(config);
-
-      this.configFile = config;
-    });
+    this.paginatedDrinks$ = combineLatest([
+      this.drinks$,
+      this.pageSize$,
+      this.pageNumber$,
+    ]).pipe(
+      map(([drinks, pageSize, pageNumber]) => {
+        const startIndex = pageNumber * pageSize;
+        const endIndex = startIndex + pageSize;
+        const currentDrinks = drinks.slice(startIndex, endIndex);
+        return currentDrinks;
+      })
+    );
   }
 
+  ngOnInit(): void {}
+
   onPageChanged(event: PageEvent) {
-    this.api.getAlcoholicDrinks().subscribe((drinks) => {
-      this.paginateAndSet(drinks, event.pageIndex);
-    });
+    this.pageNumber$.next(event.pageIndex);
   }
 
   onShowDetails(id: string) {
     this.router.navigate([`details/${id}`]);
-  }
-
-  private paginateAndSet(drinks: Drink[], pageIndex: number) {
-    const startIndex = pageIndex * this.pageSize;
-    const endIndex = startIndex + this.pageSize;
-    const currentDrinks = drinks.slice(startIndex, endIndex);
-    this.paginatedDrinks.next(currentDrinks);
   }
 }
