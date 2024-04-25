@@ -1,11 +1,6 @@
 <ng-container *ngIf="configFile$ | async; let configFile">
+  <app-header [config]="configFile"></app-header>
   <div [style.backgroundColor]="configFile.backgroundColor">
-    <div class="p-4 flex items-center gap-4">
-      <img [src]="configFile.logoUrl" class="w-14" />
-      <h1 class="mt-2 font-extrabold" [style.color]="configFile.titleColor">
-        {{ configFile.appName }}
-      </h1>
-    </div>
     <div class="flex">
       <div class="mx-4">
         <app-paginator

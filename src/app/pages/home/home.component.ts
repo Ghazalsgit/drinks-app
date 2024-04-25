@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable, Subject, combineLatest, map } from 'rxjs';
 import { DrinkContainerComponent } from 'src/app/components/drink-container/drink-container.component';
@@ -10,6 +9,7 @@ import { PaginatorComponent } from 'src/app/components/paginator/paginator.compo
 import { Config, Drink } from 'src/app/models/drink.model';
 import { ApiService } from 'src/app/services/api.service';
 import { ConfigService } from 'src/app/services/config.service';
+import { HeaderComponent } from '../../components/header/header.component';
 
 @Component({
   standalone: true,
@@ -22,6 +22,7 @@ import { ConfigService } from 'src/app/services/config.service';
     FooterComponent,
     DrinkContainerComponent,
     CommonModule,
+    HeaderComponent,
   ],
 })
 export class HomeComponent implements OnInit {
