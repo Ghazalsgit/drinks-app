@@ -1,12 +1,12 @@
-# EliqDrinksApp
+# DrinksApp
 
-Welcome to Eliq Drink App, a customizable white label app for exploring alcoholic drinks!
+Welcome to Drink App, a customizable white label app for exploring alcoholic drinks!
 
 **Note:** This application is designed to be viewed on mobile devices. It is optimized for smaller screens and provides a user-friendly experience on smartphones and tablets.
 
 ## Overview
 
-Eliq Drink App allows you to customize the appearance and functionality of your drink exploration app using a simple config.json file. By editing this file, you can change the app name, colors, API endpoints, and more.
+Drink App allows you to customize the appearance and functionality of your drink exploration app using a simple config.json file. By editing this file, you can change the app name, colors, API endpoints, and more.
 
 ## Getting Started
 
